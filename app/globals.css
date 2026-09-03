@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-manrope);
+
+  --color-background: #f7f1e8;
+  --color-foreground: #171417;
+  --color-cream: #f7f1e8;
+  --color-cream-deep: #efe5d6;
+  --color-ink: #171417;
+  --color-plum: #2a1f28;
+  --color-plum-soft: #4a3243;
+  --color-gold: #c9a25f;
+  --color-gold-soft: #d8bd8a;
+  --color-rose: #c58f9a;
+  --color-rose-soft: #dcb3bb;
+  --color-sage: #9aa889;
+}
+
+:root {
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
+}
+
+* {
+  border-color: color-mix(in oklch, var(--color-ink) 12%, transparent);
+}
+
+html {
+  background-color: var(--color-cream);
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+/* thin uppercase label used throughout the reference */
+.eyebrow {
+  font-family: var(--font-body), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-plum);
+}
+
+/* marquee for the tagline strip */
+@keyframes sw-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: sw-marquee 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
